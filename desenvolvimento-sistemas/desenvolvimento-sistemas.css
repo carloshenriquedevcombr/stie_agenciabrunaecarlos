@@ -1,0 +1,416 @@
+/* ==========================================================================
+   PÁGINA: SISTEMAS (Deck Style & Modais)
+   ========================================================================== */
+
+/* -----------------------------------------------------------
+   1. LAYOUT PRINCIPAL DA SEÇÃO
+----------------------------------------------------------- */
+.systems-section {
+    padding: 140px 0 100px; /* Espaço para header fixo */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-color);
+    overflow: hidden; /* Evita scroll horizontal durante animações */
+}
+
+.systems-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* -----------------------------------------------------------
+   2. COLUNA ESQUERDA (Info)
+----------------------------------------------------------- */
+.systems-info-col {
+    max-width: 550px;
+    z-index: 10; /* Garante que o texto fique acima de elementos decorativos */
+}
+
+.systems-info-col .section-title.align-left {
+    text-align: left;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 30px;
+    line-height: 1.1;
+}
+
+.systems-lead {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.systems-list-features {
+    list-style: none;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.systems-list-features li {
+    font-size: 1rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.systems-list-features li::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    margin-right: 15px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.cta-wrapper {
+    margin-top: 20px;
+}
+
+/* -----------------------------------------------------------
+   3. COLUNA DIREITA (O Baralho / Deck)
+----------------------------------------------------------- */
+.systems-deck-col {
+    position: relative;
+    height: 500px; /* Altura fixa para conter o baralho */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px; /* Profundidade 3D */
+}
+
+.deck-container {
+    position: relative;
+    width: 340px;
+    height: 460px;
+    /* Centraliza o deck na coluna */
+}
+
+/* ESTILO BASE DO CARD */
+.system-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #151515;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    
+    /* Layout do conteúdo interno do card */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: pointer;
+    
+    /* Transições suaves para a animação do baralho */
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                opacity 0.6s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+    
+    /* Garante o fundo opaco para esconder os cards de trás */
+    background-clip: padding-box;
+}
+
+/* Hover no card principal */
+.system-card:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+}
+
+/* --- ESTADOS DO BARALHO (Controlados via JS) --- */
+
+/* 1. Card da Frente (Ativo) */
+.system-card.card-front {
+    z-index: 10;
+    transform: translateX(0) scale(1);
+    opacity: 1;
+}
+
+/* 2. Segundo Card (Logo atrás) */
+.system-card.card-middle {
+    z-index: 9;
+    transform: translateX(20px) translateY(10px) scale(0.95);
+    opacity: 0.6;
+    pointer-events: none; /* Não clicável enquanto atrás */
+}
+
+/* 3. Terceiro Card (Fundo) */
+.system-card.card-back {
+    z-index: 8;
+    transform: translateX(40px) translateY(20px) scale(0.90);
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* 4. Card escondido (fila de espera ou saindo) */
+.system-card.card-hidden {
+    z-index: 0;
+    transform: translateX(60px) scale(0.85);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 5. Animação de Saída (Swipe Out) */
+.system-card.swiping-out {
+    transform: translateX(-120%) rotate(-10deg);
+    opacity: 0;
+}
+
+/* --- CONTEÚDO INTERNO DO CARD --- */
+.card-visual {
+    height: 60%;
+    width: 100%;
+    background: #0a0a0a;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Placeholders Visuais (Temas) */
+.system-preview-placeholder {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+.system-card:hover .system-preview-placeholder { opacity: 1; }
+
+/* Temas de cor para placeholder (Enquanto não tem print real) */
+.site-theme { background: linear-gradient(135deg, #111, #222); } 
+/* O JS vai injetar as imagens reais aqui depois se quiser */
+
+.card-content {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+.card-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+.card-action {
+    font-size: 0.85rem;
+    color: #fff;
+    margin-top: 10px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.system-card:hover .card-action {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* CONTROLES DO BARALHO */
+.deck-controls {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+.deck-nav {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.deck-nav:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.1);
+}
+
+.deck-hint {
+    position: absolute;
+    bottom: -90px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+/* -----------------------------------------------------------
+   4. MODAIS (Detalhes & Orçamento)
+----------------------------------------------------------- */
+
+/* Modal Comum */
+.system-modal-content, .budget-modal-content {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 20px;
+    width: 100%;
+    padding: 0; /* padding interno controlado nos filhos */
+    overflow: hidden;
+    position: relative;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Modal Detalhes do Sistema (Layout Split) */
+.system-modal-content {
+    max-width: 900px;
+    flex-direction: row; /* Imagem esquerda, texto direita */
+}
+
+.system-visual-col {
+    flex: 1.2;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-right: 1px solid #222;
+}
+
+.system-big-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+}
+
+.system-info-col {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.system-info-col h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.system-info-col p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Modal Orçamento (Formulário) */
+.budget-modal-content {
+    max-width: 600px;
+    padding: 40px;
+}
+
+.budget-modal-content .modal-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.budget-modal-content h3 { font-size: 1.8rem; color: #fff; margin-bottom: 10px; }
+.budget-modal-content p { color: var(--text-muted); font-size: 0.9rem; }
+
+.budget-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Ajustes no select para ficar bonito */
+select.input-field {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+}
+
+/* -----------------------------------------------------------
+   5. RESPONSIVIDADE
+----------------------------------------------------------- */
+
+/* Tablet & Mobile (Stack Vertical) */
+@media (max-width: 1024px) {
+    .systems-split-layout {
+        grid-template-columns: 1fr;
+        gap: 80px;
+    }
+
+    .systems-info-col {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .systems-info-col .section-title.align-left {
+        text-align: center;
+    }
+
+    .systems-list-features {
+        align-items: center; /* Centraliza a lista visualmente */
+    }
+
+    .systems-deck-col {
+        height: 450px;
+    }
+}
+
+/* Mobile (Ajustes Finos) */
+@media (max-width: 700px) {
+    .deck-container {
+        width: 280px;
+        height: 400px;
+    }
+    
+    /* Modal de sistema vira coluna no mobile */
+    .system-modal-content {
+        flex-direction: column;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+    
+    .system-visual-col {
+        min-height: 250px;
+        border-right: none;
+        border-bottom: 1px solid #222;
+    }
+    
+    .system-info-col {
+        padding: 25px;
+    }
+}

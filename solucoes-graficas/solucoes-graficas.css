@@ -1,0 +1,397 @@
+/* ==========================================================================
+   PÁGINA: SOLUÇÕES PARA GRÁFICAS (Deck Style & Modais)
+   ========================================================================== */
+
+/* -----------------------------------------------------------
+   1. LAYOUT PRINCIPAL DA SEÇÃO
+----------------------------------------------------------- */
+.graficas-section {
+    padding: 140px 0 100px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-color);
+    overflow: hidden; /* Evita barra de rolagem horizontal durante animações */
+}
+
+.graficas-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* -----------------------------------------------------------
+   2. COLUNA ESQUERDA (Info e Textos)
+----------------------------------------------------------- */
+.graficas-info-col {
+    max-width: 550px;
+    z-index: 10;
+}
+
+.graficas-info-col .section-title.align-left {
+    text-align: left;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 25px;
+    line-height: 1.1;
+    color: #999; /* Tom cinza opaco idêntico ao da referência */
+    letter-spacing: -0.02em;
+}
+
+.graficas-lead {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Lista de Serviços Específicos */
+.graficas-list-features {
+    list-style: none;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.graficas-list-features li {
+    font-size: 1.05rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+/* Estilo do Bullet da lista */
+.graficas-list-features li::before {
+    content: "•";
+    display: inline-block;
+    color: #fff;
+    margin-right: 15px;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.cta-wrapper {
+    margin-top: 20px;
+}
+
+/* -----------------------------------------------------------
+   3. COLUNA DIREITA (O Baralho / Deck Gráfico)
+----------------------------------------------------------- */
+.graficas-deck-col {
+    position: relative;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px; /* Efeito 3D para as cartas de trás */
+}
+
+.deck-container {
+    position: relative;
+    width: 340px;
+    height: 460px;
+}
+
+/* ESTILO BASE DO CARD */
+.grafica-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #151515;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                opacity 0.6s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+    background-clip: padding-box;
+}
+
+.grafica-card:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+}
+
+/* --- POSIÇÕES DO BARALHO (Ativadas via JS) --- */
+.grafica-card.card-front {
+    z-index: 10;
+    transform: translateX(0) scale(1);
+    opacity: 1;
+}
+
+.grafica-card.card-middle {
+    z-index: 9;
+    transform: translateX(20px) translateY(10px) scale(0.95);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.grafica-card.card-back {
+    z-index: 8;
+    transform: translateX(40px) translateY(20px) scale(0.90);
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.grafica-card.card-hidden {
+    z-index: 0;
+    transform: translateX(60px) scale(0.85);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- INTERIOR DO CARD --- */
+.card-visual {
+    height: 60%;
+    width: 100%;
+    background: #0a0a0a;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.system-preview-placeholder {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.grafica-card:hover .system-preview-placeholder { opacity: 1; }
+
+.card-content {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+.card-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+.card-action {
+    font-size: 0.85rem;
+    color: #fff;
+    margin-top: 10px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.grafica-card:hover .card-action {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* CONTROLES DO BARALHO */
+.deck-controls {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+.deck-nav {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.deck-nav:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.1);
+}
+
+.deck-hint {
+    position: absolute;
+    bottom: -90px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+/* -----------------------------------------------------------
+   4. MODAIS (Detalhes & Orçamento)
+----------------------------------------------------------- */
+.graficas-modal-content, .budget-modal-content {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 20px;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Modal Expandido do Card */
+.graficas-modal-content {
+    max-width: 900px;
+    flex-direction: row; 
+}
+
+.graficas-modal-body {
+    display: flex;
+    width: 100%;
+}
+
+.graficas-visual-col {
+    flex: 1.2;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-right: 1px solid #222;
+}
+
+.graficas-big-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+}
+
+.graficas-info-col {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.graficas-info-col h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.graficas-info-col p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Modal do Formulário */
+.budget-modal-content {
+    max-width: 600px;
+    padding: 40px;
+}
+
+.budget-modal-content .modal-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.budget-modal-content h3 { font-size: 1.8rem; color: #fff; margin-bottom: 10px; }
+.budget-modal-content p { color: var(--text-muted); font-size: 0.9rem; }
+
+.budget-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+select.input-field {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+}
+
+/* -----------------------------------------------------------
+   5. RESPONSIVIDADE
+----------------------------------------------------------- */
+@media (max-width: 1024px) {
+    .graficas-split-layout {
+        grid-template-columns: 1fr;
+        gap: 80px;
+    }
+
+    .graficas-info-col {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .graficas-info-col .section-title.align-left {
+        text-align: center;
+    }
+
+    .graficas-list-features {
+        align-items: center; 
+    }
+
+    .graficas-deck-col {
+        height: 450px;
+    }
+}
+
+@media (max-width: 700px) {
+    .deck-container {
+        width: 280px;
+        height: 400px;
+    }
+    
+    .graficas-modal-content {
+        flex-direction: column;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+    
+    .graficas-modal-body {
+        flex-direction: column;
+    }
+
+    .graficas-visual-col {
+        min-height: 250px;
+        border-right: none;
+        border-bottom: 1px solid #222;
+    }
+    
+    .graficas-info-col {
+        padding: 25px;
+    }
+}
