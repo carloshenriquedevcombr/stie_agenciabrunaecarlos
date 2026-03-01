@@ -186,7 +186,7 @@
                 <p>Configure sua demanda abaixo e retornaremos em breve.</p>
             </div>
 
-            <form id="budget-form" class="budget-form">
+            <form id="budget-form" class="budget-form" action="http://72.62.136.241:5678/webhook/form-site" method="POST">
                 <div class="form-row">
                     <input type="text" id="budget-name" name="nome" class="input-field" placeholder="Seu Nome" required>
                 </div>
@@ -219,13 +219,5 @@
     <script src="../script.js"></script>
     <script src="desenvolvimento-sistemas.js"></script>
 
-    <script>
-        (function(w,d,t,u,n,a,m){w['MauticTrackingObject']=n;
-            w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)},a=d.createElement(t),
-            m=d.getElementsByTagName(t)[0];a.async=1;a.src=u;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://carloshenriquedev.com/mautic/mtc.js','mt');
-        
-        mt('send', 'pageview');
-    </script>
 </body>
 </html>
