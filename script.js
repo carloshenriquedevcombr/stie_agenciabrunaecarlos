@@ -133,21 +133,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const portfolioModal = document.getElementById('portfolio-modal');
     const openPortfolioBtn = document.getElementById('open-portfolio-btn');
     const closePortfolioBtn = document.getElementById('close-portfolio-btn');
-    // Pegamos todas as imagens da galeria para poder navegar entre elas
     const galleryImages = document.querySelectorAll('.modal-gallery .gallery-item img');
 
-    let currentLightboxIndex = 0; // Guarda qual imagem está aberta no momento
+    let currentLightboxIndex = 0; 
 
     if (portfolioModal && openPortfolioBtn) {
         
-        // --- Abre o modal principal do Portfólio ---
         openPortfolioBtn.addEventListener('click', (e) => {
             e.preventDefault();
             portfolioModal.classList.add('active');
             document.body.classList.add('modal-open');
         });
 
-        // --- Fecha o modal principal do Portfólio ---
         function closePortfolio() {
             portfolioModal.classList.remove('active');
             document.body.classList.remove('modal-open');
@@ -159,11 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === portfolioModal) closePortfolio();
         });
 
-        // --- Teclas de atalho ---
         document.addEventListener('keydown', (e) => {
             const lightbox = document.querySelector('.lightbox-overlay');
             
-            // ESC para fechar
             if (e.key === 'Escape') {
                 if (lightbox) {
                     closeLightbox();
@@ -172,27 +167,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Setas do teclado para navegar no carrossel
             if (lightbox) {
                 if (e.key === 'ArrowRight') navigateLightbox(1);
                 if (e.key === 'ArrowLeft') navigateLightbox(-1);
             }
         });
 
-        // --- Atribui o clique de zoom para cada item da galeria ---
         galleryImages.forEach((imgElement, index) => {
             imgElement.parentElement.addEventListener('click', () => {
-                currentLightboxIndex = index; // Salva o índice da imagem clicada
+                currentLightboxIndex = index; 
                 openLightbox(); 
             });
         });
     }
 
-    // --- LÓGICA DO CARROSSEL (LIGHTBOX) ---
     function openLightbox() {
         let lightbox = document.querySelector('.lightbox-overlay');
 
-        // Cria a tela preta com os controles se ela ainda não existir
         if (!lightbox) {
             lightbox = document.createElement('div');
             lightbox.className = 'lightbox-overlay';
@@ -209,7 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 transition: 'opacity 0.3s ease'
             });
 
-            // Elemento da imagem
             const imgElement = document.createElement('img');
             imgElement.className = 'lightbox-image';
             Object.assign(imgElement.style, {
@@ -222,58 +212,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 boxShadow: '0 10px 40px rgba(0,0,0,0.8)'
             });
 
-            // Botão Fechar (X)
             const closeBtn = document.createElement('button');
             closeBtn.innerHTML = '&times;';
             closeBtn.className = 'lightbox-close-zoom';
             closeBtn.addEventListener('click', closeLightbox);
 
-            // Botão Anterior (<)
             const prevBtn = document.createElement('button');
             prevBtn.innerHTML = '&#10094;';
             prevBtn.className = 'lightbox-btn lightbox-prev';
             prevBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Evita que o clique feche o lightbox
+                e.stopPropagation(); 
                 navigateLightbox(-1);
             });
 
-            // Botão Próximo (>)
             const nextBtn = document.createElement('button');
             nextBtn.innerHTML = '&#10095;';
             nextBtn.className = 'lightbox-btn lightbox-next';
             nextBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Evita que o clique feche o lightbox
+                e.stopPropagation(); 
                 navigateLightbox(1);
             });
 
-            // Fecha ao clicar fora da imagem
             lightbox.addEventListener('click', (e) => {
                 if (e.target === lightbox) closeLightbox();
             });
 
-            // Junta tudo na tela
             lightbox.appendChild(imgElement);
             lightbox.appendChild(closeBtn);
             lightbox.appendChild(prevBtn);
             lightbox.appendChild(nextBtn);
             document.body.appendChild(lightbox);
 
-            // Animação suave de entrada
             requestAnimationFrame(() => {
                 lightbox.style.opacity = '1';
                 imgElement.style.transform = 'scale(1)';
             });
         }
 
-        // Carrega a imagem atual no elemento
         updateLightboxImage();
     }
 
-    // Função que troca a URL da imagem de acordo com o índice
     function updateLightboxImage() {
         const imgElement = document.querySelector('.lightbox-image');
         if (imgElement && galleryImages[currentLightboxIndex]) {
-            // Pequeno piscar (fade) para deixar a troca fluida
             imgElement.style.opacity = '0.5';
             setTimeout(() => {
                 imgElement.src = galleryImages[currentLightboxIndex].src;
@@ -282,11 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Navega para a próxima ou anterior
     function navigateLightbox(direction) {
         currentLightboxIndex += direction;
 
-        // Efeito de loop (vai da última para a primeira e vice-versa)
         if (currentLightboxIndex >= galleryImages.length) {
             currentLightboxIndex = 0;
         } else if (currentLightboxIndex < 0) {
@@ -296,7 +275,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateLightboxImage();
     }
 
-    // Destrói o Lightbox ao fechar
     function closeLightbox() {
         const lightbox = document.querySelector('.lightbox-overlay');
         if (lightbox) {
@@ -309,4 +287,124 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 300);
         }
     }
+
+    // ======================================================
+    // 5. AUTOMAÇÃO AVANÇADA: MAUTIC & n8n
+    // ======================================================
+    
+    // URL do Webhook do n8n
+    const webhookN8N = 'https://n8n.carloshenriquedev.com/webhook/formulario-site';
+
+    // Função para notificar o n8n sobre ações
+    function enviarAlertaParaN8N(tipoAcao, dadosExtras = {}) {
+        const payload = { 
+            acao: tipoAcao, 
+            origem: window.location.href,
+            data: new Date().toLocaleString('pt-BR'),
+            ...dadosExtras
+        };
+
+        fetch(webhookN8N, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }).catch(err => console.log('Automação: Aviso não enviado.', err));
+    }
+
+    // 5.1 Rastrear cliques no WhatsApp
+    const btnWpp = document.getElementById('btn-track-wpp');
+    if (btnWpp) {
+        btnWpp.addEventListener('click', () => {
+            if (typeof mt === 'function') mt('send', 'pageview', {tags: 'clicou_whatsapp'});
+            enviarAlertaParaN8N('clique_whatsapp');
+        });
+    }
+
+    // 5.2 Rastrear cliques no E-mail
+    const btnEmail = document.getElementById('btn-track-email');
+    if (btnEmail) {
+        btnEmail.addEventListener('click', () => {
+            if (typeof mt === 'function') mt('send', 'pageview', {tags: 'clicou_email'});
+            enviarAlertaParaN8N('clique_email');
+        });
+    }
+
+    // 5.3 Capturar Formulário (Funciona na Home e nas Subpáginas)
+    const formOrcamento = document.querySelector('#form-orcamento, #budget-form');
+    
+    if (formOrcamento) {
+        // --- NOVIDADE: Rastreio de Intenção (Abandono) ---
+        let intencaoRegistrada = false;
+        const inputsDoFormulario = formOrcamento.querySelectorAll('input, textarea, select');
+        
+        inputsDoFormulario.forEach(input => {
+            // Quando a pessoa digita e sai do campo (blur)
+            input.addEventListener('blur', () => {
+                // Se a pessoa digitou algo e a intenção ainda não foi registrada
+                if (!intencaoRegistrada && input.value.trim() !== '') {
+                    intencaoRegistrada = true; // Garante que só avisa uma vez
+                    
+                    if (typeof mt === 'function') mt('send', 'pageview', {tags: 'iniciou_preenchimento'});
+                    enviarAlertaParaN8N('abandono_formulario', { campo_preenchido: input.name || input.id });
+                }
+            });
+        });
+
+        // --- Envio de Fato do Formulário ---
+        formOrcamento.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            // Pega todos os dados preenchidos usando os names ou IDs dos campos
+            const nome = formOrcamento.querySelector('[name="nome"], #budget-name')?.value || '';
+            const email = formOrcamento.querySelector('[name="email"], #budget-email')?.value || '';
+            const telefone = formOrcamento.querySelector('[name="telefone"], #budget-phone')?.value || '';
+            const assunto = formOrcamento.querySelector('[name="assunto"], #budget-type')?.value || '';
+            const mensagem = formOrcamento.querySelector('[name="mensagem"], #budget-message')?.value || '';
+
+            const dadosDoCliente = {
+                acao: 'envio_formulario',
+                nome: nome,
+                email: email,
+                telefone: telefone,
+                assunto: assunto,
+                mensagem: mensagem
+            };
+
+            // Registra no Mautic que ele virou um Lead
+            if (typeof mt === 'function') {
+                mt('send', 'pageview', {
+                    email: dadosDoCliente.email,
+                    firstname: dadosDoCliente.nome,
+                    phone: dadosDoCliente.telefone,
+                    tags: 'solicitou_orcamento'
+                });
+            }
+
+            const btnSubmit = formOrcamento.querySelector('.btn-submit');
+            const textoOriginal = btnSubmit.innerHTML;
+            btnSubmit.innerHTML = 'Enviando...';
+            btnSubmit.disabled = true;
+
+            // Envia para o n8n
+            fetch(webhookN8N, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dadosDoCliente)
+            })
+            .then(response => {
+                alert("Projeto recebido! Você e a Bruna serão notificados no WhatsApp e enviaremos um e-mail em instantes.");
+                formOrcamento.reset(); 
+                intencaoRegistrada = false; // Reseta a intenção
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert("Houve um pequeno atraso, mas não se preocupe! Por favor, chame-nos no WhatsApp abaixo para um atendimento imediato.");
+            })
+            .finally(() => {
+                btnSubmit.innerHTML = textoOriginal;
+                btnSubmit.disabled = false;
+            });
+        });
+    }
+
 });
