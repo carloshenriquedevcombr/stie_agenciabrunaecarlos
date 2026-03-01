@@ -1,349 +1,728 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bruna & Carlos - Design que funciona, Código que performa. Desenvolvimento Web e Design Gráfico.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Bruna & Carlos - Design que funciona, Código que performa. Desenvolvimento Web e Design Gráfico."
+    />
     <title>Bruna & Carlos | Design & Dev</title>
 
-    <link rel="icon" href="BC/logo.png" type="image/png">
+    <link rel="icon" href="BC/logo.png" type="image/png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
- 
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header class="site-header">
-        <div class="glass-nav-container">
-            <a href="#inicio" class="logo-link" aria-label="Ir para o início">
-                <img src="BC/logo.png" alt="Bruna & Carlos Logo" class="brand-logo">
-            </a>
+      <div class="glass-nav-container">
+        <a href="#inicio" class="logo-link" aria-label="Ir para o início">
+          <img src="BC/logo.png" alt="Bruna & Carlos Logo" class="brand-logo" />
+        </a>
 
-            <nav class="desktop-nav" aria-label="Menu principal">
-                <ul>
-                    <li><a href="#inicio" class="nav-link">Início</a></li>
-                    <li><a href="#servicos" class="nav-link">Serviços</a></li>
-                    <li><a href="#quem-somos" class="nav-link">Quem somos</a></li>
-                    <li><a href="#contato" class="nav-link">Contato</a></li>
-                </ul>
-            </nav>
+        <nav class="desktop-nav" aria-label="Menu principal">
+          <ul>
+            <li><a href="#inicio" class="nav-link">Início</a></li>
+            <li><a href="#servicos" class="nav-link">Serviços</a></li>
+            <li><a href="#quem-somos" class="nav-link">Quem somos</a></li>
+            <li><a href="#contato" class="nav-link">Contato</a></li>
+          </ul>
+        </nav>
 
-            <div class="header-cta">
-                <a href="#contato" class="btn-glow">Orçamento</a>
-            </div>
-
-            <button class="mobile-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
+        <div class="header-cta">
+          <a href="#contato" class="btn-glow">Orçamento</a>
         </div>
 
-        <div id="mobile-menu" class="mobile-menu-overlay" role="dialog" aria-modal="true" aria-label="Menu mobile">
-            <nav class="mobile-nav-links" aria-label="Menu mobile">
-                <a href="#inicio">Início</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#quem-somos">Quem somos</a>
-                <a href="#contato">Contato</a>
-            </nav>
-        </div>
+        <button
+          class="mobile-toggle"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="mobile-menu-overlay"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu mobile"
+      >
+        <nav class="mobile-nav-links" aria-label="Menu mobile">
+          <a href="#inicio">Início</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#quem-somos">Quem somos</a>
+          <a href="#contato">Contato</a>
+        </nav>
+      </div>
     </header>
 
     <main>
-        <section id="inicio" class="hero-section">
-            <div class="hero-slider">
-                <div class="slide active" style="background-image: url('imagens/banner/banner1.jpg');"></div>
-                <div class="slide" style="background-image: url('imagens/banner/banner2.jpg');"></div>
-                <div class="slide" style="background-image: url('imagens/banner/banner3.jpg');"></div>
+      <section id="inicio" class="hero-section">
+        <div class="hero-slider">
+          <div
+            class="slide active"
+            style="
+              background-image: url(&quot;imagens/banner/banner1.jpg&quot;);
+            "
+          ></div>
+          <div
+            class="slide"
+            style="
+              background-image: url(&quot;imagens/banner/banner2.jpg&quot;);
+            "
+          ></div>
+          <div
+            class="slide"
+            style="
+              background-image: url(&quot;imagens/banner/banner3.jpg&quot;);
+            "
+          ></div>
 
-                <div class="slider-overlay"></div>
-                <button class="slider-arrow prev-btn" aria-label="Anterior">&#10094;</button>
-                <button class="slider-arrow next-btn" aria-label="Próximo">&#10095;</button>
-                <div class="slider-dots" aria-label="Paginação do slider"></div>
+          <div class="slider-overlay"></div>
+          <button class="slider-arrow prev-btn" aria-label="Anterior">
+            &#10094;
+          </button>
+          <button class="slider-arrow next-btn" aria-label="Próximo">
+            &#10095;
+          </button>
+          <div class="slider-dots" aria-label="Paginação do slider"></div>
+        </div>
+
+        <div class="container hero-content-overlay">
+          <h1>
+            Design que encanta o seu cliente. Código que automatiza o seu lucro.
+          </h1>
+          <h2>
+            Sua empresa merece mais do que "artes bonitas" que não vendem ou
+            "sistemas de prateleira" que travam sua operação. Transformamos sua
+            marca em um ecossistema digital de alta performance.
+          </h2>
+        </div>
+      </section>
+
+      <section id="servicos" class="services-section">
+        <div class="container">
+          <h2 class="section-title">Serviços</h2>
+
+          <div class="services-grid">
+            <div class="service-card">
+              <h3>Desenvolvimento<br />de Sistemas</h3>
+              Equipes sobrecarregadas, processos manuais e softwares genéricos
+              que não atendem à realidade da empresa.<br />
+              <br />
+              <p>
+                Sua empresa não cabe em uma caixa. Desenvolvemos ecossistemas
+                digitais sob medida (ERP, WMS, CRM) focados em performance e
+                escalabilidade. Colocamos suas vendas e logística no piloto
+                automático para que você foque no que importa: crescer.
+              </p>
+              <br /><a
+                href="desenvolvimento-sistemas/desenvolvimento-sistemas.html"
+                class="btn-link"
+                >Automatizar Minha Operação</a
+              >
             </div>
 
-            <div class="container hero-content-overlay">
-                <h1>Design que encanta o seu cliente. Código que automatiza 
-                    o seu lucro.</h1>
-                <h2>Sua empresa merece mais do que "artes bonitas" que não
-                     vendem ou "sistemas de prateleira" que travam sua 
-                     operação. Transformamos sua marca em um ecossistema
-                      digital de alta performance.</h2>
+            <div class="service-card">
+              <h3>Soluções para<br />Gráficas</h3>
+              Máquina parada por causa de arquivo errado de cliente é dinheiro
+              jogado no lixo.<br />
+              <br />
+              <p>
+                O gargalo não está na sua impressora, está na entrada do
+                arquivo. Atuamos como seu Departamento de Pré-Impressão e TI
+                externo. Fechamento impecável, facas técnicas e ajustes finos.
+                Assumimos a burocracia técnica para garantir que sua máquina
+                rode "zerada" e sem refações.
+              </p>
+              <br /><a
+                href="solucoes-graficas/solucoes-graficas.html"
+                class="btn-link"
+                >Escalar Minha Agência</a
+              >
             </div>
-        </section>
 
-        <section id="servicos" class="services-section">
-            <div class="container">
-                <h2 class="section-title">Serviços</h2>
+            <div class="service-card">
+              <h3>Parceria com<br />Agências</h3>
+              Diretores de arte sufocados com trabalho operacional braçal e
+              prazos estourando.<br />
+              <br />
+              <p>
+                Seu braço direito invisível na produção criativa. Tratamento de
+                imagens high-end, desdobramentos em escala, diagramação e
+                desenvolvimento de LPs. Nós fazemos o trabalho pesado nos
+                bastidores, sua agência fica com os aplausos e os lucros.
+              </p>
+              <br /><br /><a
+                href="parceria-agencias/parceria-agencias.html"
+                class="btn-link"
+                >Escalar Minha Agência</a
+              >
+            </div>
 
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3>Desenvolvimento<br>de Sistemas</h3>
-                        Equipes sobrecarregadas, processos manuais e softwares genéricos que não atendem à realidade da empresa.<br>
-                        <br><p>Sua empresa não cabe em uma caixa. Desenvolvemos ecossistemas digitais sob medida (ERP, WMS, CRM) focados em performance e escalabilidade. Colocamos suas vendas e logística no piloto automático para que você foque no que importa: crescer.</p>
-                        <br><a href="desenvolvimento-sistemas/desenvolvimento-sistemas.html" class="btn-link">Automatizar Minha Operação</a>
-                    </div>
+            <div class="service-card">
+              <h3>Branding<br />& Social Media</h3>
+              Marcas genéricas que brigam por preço e perdem clientes para a
+              concorrência.<br />
+              <br />
+              <p>
+                Sua marca precisa vender antes mesmo de você falar. Se você não
+                se posiciona, desaparece. Unimos design de alto padrão a funis
+                de vendas inteligentes — do rótulo da embalagem ao site de alta
+                conversão. Criamos desejo para que o cliente escolha você, e não
+                o concorrente.
+              </p>
+              <br /><a
+                href="branding-varejo/branding-varejo.html"
+                class="btn-link"
+                >Posicionar Minha Marca</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
 
-                    <div class="service-card">
-                        <h3>Soluções para<br>Gráficas</h3>
-                        Máquina parada por causa de arquivo errado de cliente é dinheiro jogado no lixo.<br>
-                        <br><p>O gargalo não está na sua impressora, está na entrada do arquivo. Atuamos como seu Departamento de Pré-Impressão e TI externo. Fechamento impecável, facas técnicas e ajustes finos. Assumimos a burocracia técnica para garantir que sua máquina rode "zerada" e sem refações.</p>
-                        <br><a href="solucoes-graficas/solucoes-graficas.html" class="btn-link">Escalar Minha Agência</a>
-                    </div>
+      <section id="quem-somos" class="about-section">
+        <div class="container">
+          <h2 class="section-title">Quem Somos</h2>
 
-                    <div class="service-card">
-                        <h3>Parceria com<br>Agências</h3>
-                        Diretores de arte sufocados com trabalho operacional braçal e prazos estourando.<br>
-                        <br><p>Seu braço direito invisível na produção criativa. Tratamento de imagens high-end, desdobramentos em escala, diagramação e desenvolvimento de LPs. Nós fazemos o trabalho pesado nos bastidores, sua agência fica com os aplausos e os lucros.</p>
-                        <br><br><a href="parceria-agencias/parceria-agencias.html" class="btn-link">Escalar Minha Agência</a>
-                    </div>
+          <div class="about-content">
+            <div class="about-images">
+              <div class="profile-popout-wrapper profile-carlos">
+                <div
+                  class="profile-bg"
+                  style="
+                    background-image: url(&quot;imagens/prefil/carlos_bg.png&quot;);
+                  "
+                ></div>
+                <img
+                  src="imagens/prefil/carlos.png"
+                  alt="Carlos"
+                  class="profile-person"
+                />
+              </div>
 
-                    <div class="service-card">
-                        <h3>Branding<br>& Social Media</h3>
-                        Marcas genéricas que brigam por preço e perdem clientes para a concorrência.<br>
-                        <br><p>Sua marca precisa vender antes mesmo de você falar. Se você não se posiciona, desaparece. Unimos design de alto padrão a funis de vendas inteligentes — do rótulo da embalagem ao site de alta conversão. Criamos desejo para que o cliente escolha você, e não o concorrente.</p>
-                        <br><a href="branding-varejo/branding-varejo.html" class="btn-link">Posicionar Minha Marca</a>
-                    </div>
+              <div class="profile-popout-wrapper profile-bruna">
+                <div
+                  class="profile-bg"
+                  style="
+                    background-image: url(&quot;imagens/prefil/bruna_bg.png&quot;);
+                  "
+                ></div>
+                <img
+                  src="imagens/prefil/bruna.png"
+                  alt="Bruna"
+                  class="profile-person"
+                />
+              </div>
+            </div>
+
+            <div class="about-text">
+              <p>
+                No mercado digital, o abismo entre quem "desenha" e quem
+                "programa" custa muito caro para o seu negócio. Projetos lindos
+                que não funcionam, ou códigos complexos que o usuário não
+                entende. Nós somos a solução para esse abismo.
+              </p>
+              <br />
+              <p>
+                Unimos a visão estratégica e humanizada da Bruna (Design
+                Gráfico) ao rigor lógico e estrutural do Carlos (Desenvolvedor e
+                Cientista da Computação). Nós eliminamos a falha de comunicação
+                entre a ideia e a execução. Garantimos de forma absoluta que a
+                promessa visual aprovada será entregue com segurança técnica,
+                seja em um sistema corporativo robusto ou na pré-impressão de
+                uma embalagem. Sem surpresas, sem retrabalho.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="portfolio-section">
+        <div class="container">
+          <h2 class="section-title">Portfólio</h2>
+
+          <div class="portfolio-grid">
+            <div class="portfolio-item item-large-square">
+              <img src="imagens/artes/Amanda/feed.png" alt="Arte Amanda" />
+            </div>
+            <div class="portfolio-item item-small-rect">
+              <img src="imagens/artes/Calamani/logo.png" alt="Arte Calamani" />
+            </div>
+            <div class="portfolio-item item-tall">
+              <img src="imagens/artes/Zenzero/logo.png" alt="Arte Carolina" />
+            </div>
+            <div class="portfolio-item item-mid-bottom">
+              <img src="imagens/artes/Vitta/Vitta_04.png" alt="Arte Elle" />
+            </div>
+            <div class="portfolio-item item-wide">
+              <img
+                src="imagens/artes/Escola_feed/Carrossel_2.png"
+                alt="Arte Escola"
+              />
+            </div>
+            <div class="portfolio-item item-large-bottom">
+              <img
+                src="imagens/artes/Carolina/Carolina.png"
+                alt="Logo Zenzero"
+              />
+            </div>
+          </div>
+
+          <div class="portfolio-cta-container">
+            <button id="open-portfolio-btn" class="btn-submit">
+              Ver Portfólio
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="contato" class="contact-section">
+        <div class="container">
+          <h2 class="section-title">Contato</h2>
+
+          <div class="contact-split">
+            <div class="contact-left-col">
+              <h3 class="contact-headline">
+                O seu sucesso está a uma decisão de distância.<br />
+              </h3>
+              <p class="contact-subtext">
+                Adiar a profissionalização da sua marca ou a automação dos seus
+                sistemas é deixar dinheiro na mesa todos os dias. Do conceito
+                visual à arquitetura de código, estamos prontos. Preencha os
+                campos abaixo e dê o primeiro passo para uma operação mais
+                lucrativa e eficiente.
+              </p>
+
+              <div class="portfolio-mini-grid">
+                <div class="mini-item"></div>
+                <div class="mini-item"></div>
+                <div class="mini-item"></div>
+                <div class="mini-item highlight"></div>
+              </div>
+            </div>
+
+            <div class="contact-right-col">
+              <div class="form-header">
+                <div class="role-badge dev-badge">
+                  <span class="cursor">_</span> Vamos materializar sua próxima
+                  ideia?
                 </div>
-            </div>
-        </section>
+              </div>
 
-        <section id="quem-somos" class="about-section">
-            <div class="container">
-                <h2 class="section-title">Quem Somos</h2>
-
-                <div class="about-content">
-                    
-                    <div class="about-images">
-                        <div class="profile-popout-wrapper profile-carlos">
-                            <div class="profile-bg" style="background-image: url('imagens/prefil/carlos_bg.png');"></div>
-                            <img src="imagens/prefil/carlos.png" alt="Carlos" class="profile-person">
-                        </div>
-
-                        <div class="profile-popout-wrapper profile-bruna">
-                            <div class="profile-bg" style="background-image: url('imagens/prefil/bruna_bg.png');"></div>
-                            <img src="imagens/prefil/bruna.png" alt="Bruna" class="profile-person">
-                        </div>
-                    </div>
-
-                    <div class="about-text">
-                        <p>No mercado digital, o abismo entre quem "desenha" e quem "programa" custa muito caro para o seu negócio. Projetos lindos que não funcionam, ou códigos complexos que o usuário não entende. Nós somos a solução para esse abismo.</p>
-                        <br><p>Unimos a visão estratégica e humanizada da Bruna (Design Gráfico) ao rigor lógico e estrutural do Carlos (Desenvolvedor e Cientista da Computação). Nós eliminamos a falha de comunicação entre a ideia e a execução. Garantimos de forma absoluta que a promessa visual aprovada será entregue com segurança técnica, seja em um sistema corporativo robusto ou na pré-impressão de uma embalagem. Sem surpresas, sem retrabalho.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="portfolio" class="portfolio-section">
-            <div class="container">
-                <h2 class="section-title">Portfólio</h2>
-
-                <div class="portfolio-grid">
-                    <div class="portfolio-item item-large-square">
-                        <img src="imagens/artes/Amanda/feed.png" alt="Arte Amanda">
-                    </div>
-                    <div class="portfolio-item item-small-rect">
-                        <img src="imagens/artes/Calamani/logo.png" alt="Arte Calamani">
-                    </div>
-                    <div class="portfolio-item item-tall">
-                        <img src="imagens/artes/Zenzero/logo.png" alt="Arte Carolina">
-                    </div>
-                    <div class="portfolio-item item-mid-bottom">
-                        <img src="imagens/artes/Vitta/Vitta_04.png" alt="Arte Elle">
-                    </div>
-                    <div class="portfolio-item item-wide">
-                        <img src="imagens/artes/Escola_feed/Carrossel_2.png" alt="Arte Escola">
-                    </div>
-                    <div class="portfolio-item item-large-bottom">
-                        <img src="imagens/artes/Carolina/Carolina.png" alt="Logo Zenzero">
-                    </div>
+              <form
+                id="form-orcamento"
+                class="contact-form"
+                action="http://72.62.136.241:5678/webhook/form-site"
+                method="POST"
+              >
+                <div class="form-group-row">
+                  <div class="input-wrapper">
+                    <input
+                      type="text"
+                      id="lead-nome"
+                      name="nome"
+                      placeholder="Nome"
+                      required
+                      class="input-field"
+                    />
+                  </div>
+                  <div class="input-wrapper">
+                    <input
+                      type="email"
+                      id="lead-email"
+                      name="email"
+                      placeholder="E-mail"
+                      required
+                      class="input-field"
+                    />
+                  </div>
                 </div>
 
-                <div class="portfolio-cta-container">
-                    <button id="open-portfolio-btn" class="btn-submit">Ver Portfólio</button>
+                <div class="form-group-row">
+                  <div class="input-wrapper">
+                    <input
+                      type="tel"
+                      id="lead-telefone"
+                      name="telefone"
+                      placeholder="Telefone / WhatsApp"
+                      class="input-field"
+                    />
+                  </div>
+                  <div class="input-wrapper">
+                    <input
+                      type="text"
+                      id="lead-assunto"
+                      name="assunto"
+                      placeholder="Assunto do Projeto"
+                      class="input-field"
+                    />
+                  </div>
                 </div>
-            </div>
-        </section>
 
-        <section id="contato" class="contact-section">
-            <div class="container">
-                
-                <h2 class="section-title">Contato</h2>
-                
-                <div class="contact-split">
-                    
-                    <div class="contact-left-col">
-                        <h3 class="contact-headline">O seu sucesso está a uma decisão de distância.<br></h3>
-                        <p class="contact-subtext">
-                            Adiar a profissionalização da sua marca ou a automação dos seus sistemas é deixar dinheiro na mesa todos os dias. Do conceito visual à arquitetura de código, estamos prontos. Preencha os campos abaixo e dê o primeiro passo para uma operação mais lucrativa e eficiente.
-                        </p>
-
-                        <div class="portfolio-mini-grid">
-                            <div class="mini-item"></div>
-                            <div class="mini-item"></div>
-                            <div class="mini-item"></div>
-                            <div class="mini-item highlight"></div>
-                        </div>
-                    </div>
-
-                    <div class="contact-right-col">
-                        <div class="form-header">
-                            <div class="role-badge dev-badge">
-                                <span class="cursor">_</span> Vamos materializar sua próxima ideia?
-                            </div>
-                        </div>
-
-                        <form id="form-orcamento" class="contact-form" action="http://72.62.136.241:5678/webhook/form-site" method="POST">
-                            <div class="form-group-row">
-                                <div class="input-wrapper">
-                                    <input type="text" id="lead-nome" name="nome" placeholder="Nome" required class="input-field">
-                                </div>
-                                <div class="input-wrapper">
-                                    <input type="email" id="lead-email" name="email" placeholder="E-mail" required class="input-field">
-                                </div>
-                            </div>
-                            
-                            <div class="form-group-row">
-                                <div class="input-wrapper">
-                                    <input type="tel" id="lead-telefone" name="telefone" placeholder="Telefone / WhatsApp" class="input-field">
-                                </div>
-                                <div class="input-wrapper">
-                                    <input type="text" id="lead-assunto" name="assunto" placeholder="Assunto do Projeto" class="input-field">
-                                </div>
-                            </div>
-
-                            <div class="input-wrapper full-width">
-                                <textarea id="lead-mensagem" name="mensagem" placeholder="Descreva brevemente seu desafio..." rows="4" class="input-field"></textarea>
-                            </div>
-
-                            <div class="form-footer">
-                                <button type="submit" class="btn-submit">
-                                    Iniciar Meu Projeto Agora 
-                                    <svg style="margin-left:8px; width:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-
+                <div class="input-wrapper full-width">
+                  <textarea
+                    id="lead-mensagem"
+                    name="mensagem"
+                    placeholder="Descreva brevemente seu desafio..."
+                    rows="4"
+                    class="input-field"
+                  ></textarea>
                 </div>
+
+                <div class="form-footer">
+                  <button type="submit" class="btn-submit">
+                    Iniciar Meu Projeto Agora
+                    <svg
+                      style="margin-left: 8px; width: 16px"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                  </button>
+                </div>
+              </form>
             </div>
-        </section>
-        
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
-    <div class="container">
-        
+      <div class="container">
         <div class="footer-grid">
-            
-            <div class="footer-col brand-col">
-                <a href="#inicio" class="footer-logo-link">
-                    <img src="BC/logo.png" alt="Bruna & Carlos" class="footer-logo-img">
+          <div class="footer-col brand-col">
+            <a href="#inicio" class="footer-logo-link">
+              <img
+                src="BC/logo.png"
+                alt="Bruna & Carlos"
+                class="footer-logo-img"
+              />
+            </a>
+            <p class="footer-tagline">
+              A fusão entre estética visual e lógica de programação.<br />
+              Design que encanta, Código que funciona.
+            </p>
+          </div>
+
+          <div class="footer-col links-col">
+            <h4 class="footer-heading">Conecte-se</h4>
+            <ul class="footer-nav">
+              <li>
+                <a href="#" target="_blank" rel="noopener">
+                  <svg
+                    class="footer-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect
+                      x="2"
+                      y="2"
+                      width="20"
+                      height="20"
+                      rx="5"
+                      ry="5"
+                    ></rect>
+                    <path
+                      d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                    ></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                  <span>Instagram</span>
                 </a>
-                <p class="footer-tagline">
-                    A fusão entre estética visual e lógica de programação.<br>
-                    Design que encanta, Código que funciona.
-                </p>
-            </div>
+              </li>
+              <li>
+                <a href="#" target="_blank" rel="noopener">
+                  <svg
+                    class="footer-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 8h-4"></path>
+                    <path d="M8 12a3.5 3.5 0 0 0 0-7 3.5 3.5 0 0 0 0 7Z"></path>
+                    <path
+                      d="M13.5 15.5A3.5 3.5 0 0 0 17 12a3.5 3.5 0 0 0-3.5-3.5"
+                    ></path>
+                    <path d="M8 12v7h9"></path>
+                  </svg>
+                  <span>Behance (Portfolio)</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/carloshenriquedevcombr"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    class="footer-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                    ></path>
+                  </svg>
+                  <span>GitHub (Code)</span>
+                </a>
+              </li>
+            </ul>
+          </div>
 
-            <div class="footer-col links-col">
-                <h4 class="footer-heading">Conecte-se</h4>
-                <ul class="footer-nav">
-                    <li>
-                        <a href="#" target="_blank" rel="noopener">
-                            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                            <span>Instagram</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank" rel="noopener">
-                            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8h-4"></path><path d="M8 12a3.5 3.5 0 0 0 0-7 3.5 3.5 0 0 0 0 7Z"></path><path d="M13.5 15.5A3.5 3.5 0 0 0 17 12a3.5 3.5 0 0 0-3.5-3.5"></path><path d="M8 12v7h9"></path></svg>
-                            <span>Behance (Portfolio)</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/carloshenriquedevcombr" target="_blank" rel="noopener">
-                            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                            <span>GitHub (Code)</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="footer-col contact-col">
-                <h4 class="footer-heading">Canais Diretos</h4>
-                <ul class="footer-nav">
-                    <li>
-                        <a id="btn-track-wpp" href="https://wa.me/551938616636?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20e%20gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank">
-                            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                            <span>19 3861-6636</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a id="btn-track-email" href="mailto:contato@agenciabrunaecarlos.com">
-                            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                            <span>contato@agenciabrunaecarlos.com</span>
-                        </a>
-                    </li>
-                    <li class="location-item">
-                        <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                        <span>www.agenciabrunaecarlos.com</span>
-                    </li>
-                </ul>
-            </div>
-
+          <div class="footer-col contact-col">
+            <h4 class="footer-heading">Canais Diretos</h4>
+            <ul class="footer-nav">
+              <li>
+                <a
+                  id="btn-track-wpp"
+                  href="https://wa.me/551938616636?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ag%C3%AAncia%20e%20gostaria%20de%20falar%20sobre%20um%20projeto."
+                  target="_blank"
+                >
+                  <svg
+                    class="footer-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    ></path>
+                  </svg>
+                  <span>19 3861-6636</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  id="btn-track-email"
+                  href="mailto:contato@agenciabrunaecarlos.com"
+                >
+                  <svg
+                    class="footer-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    ></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  <span>contato@agenciabrunaecarlos.com</span>
+                </a>
+              </li>
+              <li class="location-item">
+                <svg
+                  class="footer-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                  ></path>
+                </svg>
+                <span>www.agenciabrunaecarlos.com</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div class="footer-bottom">
-            <p>© 2026 Desenvolvido por <span class="highlight-role">Designer Bruna Henlana</span> | <span class="highlight-role">Code Carlos Henrique</span></p>
+          <p>
+            © 2026 Desenvolvido por
+            <span class="highlight-role">Designer Bruna Henlana</span> |
+            <span class="highlight-role">Code Carlos Henrique</span>
+          </p>
         </div>
-
-    </div>
+      </div>
     </footer>
 
     <div id="portfolio-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button id="close-portfolio-btn" class="modal-close-btn" aria-label="Fechar galeria">&times;</button>
-            
-            <div class="modal-header">
-                <h3>Nossos Trabalhos</h3>
-                <p>Confira uma seleção dos nossos projetos recentes.</p>
-            </div>
+      <div class="modal-content">
+        <button
+          id="close-portfolio-btn"
+          class="modal-close-btn"
+          aria-label="Fechar galeria"
+        >
+          &times;
+        </button>
 
-            <div class="modal-gallery">
-                <div class="gallery-item"><img src="imagens/artes/Amanda/Amanda_01.png" alt="Arte Amanda"></div>
-                <div class="gallery-item"><img src="imagens/artes/Amanda/Amanda_02.png" alt="Arte Amanda"></div>
-                <div class="gallery-item"><img src="imagens/artes/Amanda/feed.png" alt="Arte Amanda"></div>
-                <div class="gallery-item"><img src="imagens/artes/Amanda/logo amanda.png" alt="Arte Amanda"></div>
-                <div class="gallery-item"><img src="imagens/artes/Calamani/feed carro.png" alt="Arte Calamani"></div>
-                <div class="gallery-item"><img src="imagens/artes/Calamani/logo.png" alt="Arte Calamani"></div>
-                <div class="gallery-item"><img src="imagens/artes/Calamani/post.png" alt="Arte Calamani"></div>
-                <div class="gallery-item"><img src="imagens/artes/Carolina/Carolina.png" alt="Arte Carolina"></div>
-                <div class="gallery-item"><img src="imagens/artes/Elle/feed.png" alt="Arte Elle"></div>
-                <div class="gallery-item"><img src="imagens/artes/Escola_feed/Carrossel_1.png" alt="Arte Escola"></div>
-                <div class="gallery-item"><img src="imagens/artes/Escola_feed/Carrossel_2.png" alt="Arte Escola"></div>
-                <div class="gallery-item"><img src="imagens/artes/Escola_feed/feed_02.png" alt="Arte Escola"></div>
-                <div class="gallery-item"><img src="imagens/artes/Hora do Drink/feed.png" alt="Arte Drink"></div>
-                <div class="gallery-item"><img src="imagens/artes/Profumo/Carrossel.png" alt="Arte Profumo"></div>
-                <div class="gallery-item"><img src="imagens/artes/Profumo/corte_carrossel 1.png" alt="Arte Profumo"></div>
-                <div class="gallery-item"><img src="imagens/artes/Profumo/logo.png" alt="Arte Profumo"></div>
-                <div class="gallery-item"><img src="imagens/artes/Refresh Sucos/Carrossel.png" alt="Arte Sucos"></div>
-                <div class="gallery-item"><img src="imagens/artes/Refresh Sucos/logo.png" alt="Arte Sucos"></div>
-                <div class="gallery-item"><img src="imagens/artes/Refresh Sucos/Post.png" alt="Arte Sucos"></div>
-                <div class="gallery-item"><img src="imagens/artes/Vitta/Prancheta 1.png" alt="Arte Vitta"></div>
-                <div class="gallery-item"><img src="imagens/artes/Vitta/Prancheta 2.png" alt="Arte Vitta"></div>
-                <div class="gallery-item"><img src="imagens/artes/Vitta/Prancheta 3.png" alt="Arte Vitta"></div>
-                <div class="gallery-item"><img src="imagens/artes/Vitta/Vitta_03.png" alt="Arte Vitta"></div>
-                <div class="gallery-item"><img src="imagens/artes/Vitta/Vitta.png" alt="Arte Vitta"></div>
-                <div class="gallery-item"><img src="imagens/artes/Vitta/Vitta_04.png" alt="Arte Vitta"></div>
-            </div>
+        <div class="modal-header">
+          <h3>Nossos Trabalhos</h3>
+          <p>Confira uma seleção dos nossos projetos recentes.</p>
         </div>
+
+        <div class="modal-gallery">
+          <div class="gallery-item">
+            <img src="imagens/artes/Amanda/Amanda_01.png" alt="Arte Amanda" />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Amanda/Amanda_02.png" alt="Arte Amanda" />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Amanda/feed.png" alt="Arte Amanda" />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Amanda/logo amanda.png" alt="Arte Amanda" />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="imagens/artes/Calamani/feed carro.png"
+              alt="Arte Calamani"
+            />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Calamani/logo.png" alt="Arte Calamani" />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Calamani/post.png" alt="Arte Calamani" />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="imagens/artes/Carolina/Carolina.png"
+              alt="Arte Carolina"
+            />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Elle/feed.png" alt="Arte Elle" />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="imagens/artes/Escola_feed/Carrossel_1.png"
+              alt="Arte Escola"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="imagens/artes/Escola_feed/Carrossel_2.png"
+              alt="Arte Escola"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="imagens/artes/Escola_feed/feed_02.png"
+              alt="Arte Escola"
+            />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Hora do Drink/feed.png" alt="Arte Drink" />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Profumo/Carrossel.png" alt="Arte Profumo" />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="imagens/artes/Profumo/corte_carrossel 1.png"
+              alt="Arte Profumo"
+            />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Profumo/logo.png" alt="Arte Profumo" />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="imagens/artes/Refresh Sucos/Carrossel.png"
+              alt="Arte Sucos"
+            />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Refresh Sucos/logo.png" alt="Arte Sucos" />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Refresh Sucos/Post.png" alt="Arte Sucos" />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Vitta/Prancheta 1.png" alt="Arte Vitta" />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Vitta/Prancheta 2.png" alt="Arte Vitta" />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Vitta/Prancheta 3.png" alt="Arte Vitta" />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Vitta/Vitta_03.png" alt="Arte Vitta" />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Vitta/Vitta.png" alt="Arte Vitta" />
+          </div>
+          <div class="gallery-item">
+            <img src="imagens/artes/Vitta/Vitta_04.png" alt="Arte Vitta" />
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+      const webhookAgencia =
+        "https://n8n.carloshenriquedev.com/webhook/formulario-site";
 
-</body>
+      // 1. Rastreia qual página o cliente abriu (Page View)
+      window.addEventListener("load", () => {
+        fetch(webhookAgencia, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            acao: "page_view",
+            pagina: window.location.pathname || "Home",
+            titulo: document.title,
+          }),
+        });
+      });
+
+      // 2. Rastreia cliques em botões (WhatsApp, Portfólio, etc)
+      document.addEventListener(
+        "click",
+        function (e) {
+          // Verifica se o que foi clicado é um botão ou link de ação
+          const target = e.target.closest("button, a");
+          if (target) {
+            fetch(webhookAgencia, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                acao: "clique_botao",
+                pagina: window.location.pathname || "Home",
+                texto_botao:
+                  target.innerText.trim() ||
+                  target.getAttribute("aria-label") ||
+                  "Botão sem texto",
+                link: target.href || "n/a",
+              }),
+            });
+          }
+        },
+        true,
+      );
+    </script>
+    <script src="script.js"></script>
+  </body>
 </html>
