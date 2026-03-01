@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
     const header = document.querySelector('.site-header');
 
-    // Toggle Menu (Sanduíche)
     if (mobileToggle) {
         mobileToggle.addEventListener('click', () => {
             const isOpen = mobileToggle.classList.contains('open');
@@ -16,13 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Fechar ao clicar nos links
     mobileLinks.forEach((link, index) => {
         link.style.transitionDelay = `${index * 0.1}s`;
         link.addEventListener('click', () => toggleMenu(false));
     });
 
-    // Função centralizada para abrir/fechar menu
     function toggleMenu(open) {
         if (open) {
             mobileToggle.classList.add('open');
@@ -35,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Efeito de Scroll no Header
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
@@ -57,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const timePerSlide = 6000; 
 
     if (slides.length > 0) {
-        // Inicializa bolinhas
         dotsContainer.innerHTML = '';
         slides.forEach((_, index) => {
             const dot = document.createElement('div');
@@ -99,14 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        function startTimer() {
-            slideInterval = setInterval(nextSlide, timePerSlide);
-        }
-
-        function resetTimer() {
-            clearInterval(slideInterval);
-            startTimer();
-        }
+        function startTimer() { slideInterval = setInterval(nextSlide, timePerSlide); }
+        function resetTimer() { clearInterval(slideInterval); startTimer(); }
 
         startTimer();
     }
@@ -139,23 +128,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ======================================================
-    // 4. PORTFOLIO MODAL & LIGHTBOX (ZOOM)
+    // 4. PORTFOLIO MODAL & LIGHTBOX (ZOOM + CARROSSEL)
     // ======================================================
     const portfolioModal = document.getElementById('portfolio-modal');
     const openPortfolioBtn = document.getElementById('open-portfolio-btn');
     const closePortfolioBtn = document.getElementById('close-portfolio-btn');
-    const galleryItems = document.querySelectorAll('.modal-gallery .gallery-item');
+    // Pegamos todas as imagens da galeria para poder navegar entre elas
+    const galleryImages = document.querySelectorAll('.modal-gallery .gallery-item img');
+
+    let currentLightboxIndex = 0; // Guarda qual imagem está aberta no momento
 
     if (portfolioModal && openPortfolioBtn) {
         
-        // --- Lógica de Abertura do Modal ---
+        // --- Abre o modal principal do Portfólio ---
         openPortfolioBtn.addEventListener('click', (e) => {
             e.preventDefault();
             portfolioModal.classList.add('active');
-            document.body.classList.add('modal-open'); // Trava scroll via CSS
+            document.body.classList.add('modal-open');
         });
 
-        // --- Lógica de Fechamento do Modal ---
+        // --- Fecha o modal principal do Portfólio ---
         function closePortfolio() {
             portfolioModal.classList.remove('active');
             document.body.classList.remove('modal-open');
@@ -163,96 +155,154 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (closePortfolioBtn) closePortfolioBtn.addEventListener('click', closePortfolio);
 
-        // Fecha clicando fora
         portfolioModal.addEventListener('click', (e) => {
             if (e.target === portfolioModal) closePortfolio();
         });
 
-        // Fecha com ESC
+        // --- Teclas de atalho ---
         document.addEventListener('keydown', (e) => {
+            const lightbox = document.querySelector('.lightbox-overlay');
+            
+            // ESC para fechar
             if (e.key === 'Escape') {
-                if (document.querySelector('.lightbox-overlay')) {
-                    // Se o lightbox de zoom estiver aberto, fecha ele primeiro
+                if (lightbox) {
                     closeLightbox();
                 } else if (portfolioModal.classList.contains('active')) {
-                    // Senão fecha o modal
                     closePortfolio();
                 }
             }
+
+            // Setas do teclado para navegar no carrossel
+            if (lightbox) {
+                if (e.key === 'ArrowRight') navigateLightbox(1);
+                if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            }
         });
 
-        // --- Lógica de Zoom (Lightbox) ---
-        // Cria um visualizador rápido sem precisar de HTML extra
-        galleryItems.forEach(item => {
-            item.addEventListener('click', () => {
-                // Pega a imagem de fundo ou img tag
-                let bgImage = item.style.backgroundImage;
-                
-                // Se for placeholder sem imagem, usa uma cor ou placeholder visual
-                if (!bgImage || bgImage === 'none') {
-                    // Apenas para teste, se não tiver imagem real
-                    // Em produção, isso pegará a imagem real definida no CSS ou HTML
-                    createLightbox(null, item.classList); 
-                } else {
-                    createLightbox(bgImage);
-                }
+        // --- Atribui o clique de zoom para cada item da galeria ---
+        galleryImages.forEach((imgElement, index) => {
+            imgElement.parentElement.addEventListener('click', () => {
+                currentLightboxIndex = index; // Salva o índice da imagem clicada
+                openLightbox(); 
             });
         });
     }
 
-    // Função Auxiliar: Cria o Lightbox dinamicamente
-    function createLightbox(imageSource, classes) {
-        const lightbox = document.createElement('div');
-        lightbox.className = 'lightbox-overlay';
-        
-        // Estilos Inline para garantir funcionamento sem mexer no CSS agora
-        Object.assign(lightbox.style, {
-            position: 'fixed',
-            top: '0', left: '0', width: '100%', height: '100%',
-            backgroundColor: 'rgba(0,0,0,0.95)',
-            zIndex: '3000',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            cursor: 'zoom-out',
-            opacity: '0',
-            transition: 'opacity 0.3s ease'
-        });
+    // --- LÓGICA DO CARROSSEL (LIGHTBOX) ---
+    function openLightbox() {
+        let lightbox = document.querySelector('.lightbox-overlay');
 
-        // Cria o container da imagem
-        const imgContainer = document.createElement('div');
-        Object.assign(imgContainer.style, {
-            width: '80%',
-            height: '80%',
-            borderRadius: '12px',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            backgroundImage: imageSource || 'none',
-            backgroundColor: imageSource ? 'transparent' : '#222', // Fallback se for placeholder
-            transform: 'scale(0.9)',
-            transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
-        });
+        // Cria a tela preta com os controles se ela ainda não existir
+        if (!lightbox) {
+            lightbox = document.createElement('div');
+            lightbox.className = 'lightbox-overlay';
+            
+            Object.assign(lightbox.style, {
+                position: 'fixed',
+                top: '0', left: '0', width: '100%', height: '100%',
+                backgroundColor: 'rgba(0,0,0,0.95)',
+                zIndex: '3000',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                opacity: '0',
+                transition: 'opacity 0.3s ease'
+            });
 
-        lightbox.appendChild(imgContainer);
-        document.body.appendChild(lightbox);
+            // Elemento da imagem
+            const imgElement = document.createElement('img');
+            imgElement.className = 'lightbox-image';
+            Object.assign(imgElement.style, {
+                maxWidth: '90%',
+                maxHeight: '90%',
+                borderRadius: '8px',
+                objectFit: 'contain',
+                transform: 'scale(0.9)',
+                transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s',
+                boxShadow: '0 10px 40px rgba(0,0,0,0.8)'
+            });
 
-        // Animação de Entrada
-        requestAnimationFrame(() => {
-            lightbox.style.opacity = '1';
-            imgContainer.style.transform = 'scale(1)';
-        });
+            // Botão Fechar (X)
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '&times;';
+            closeBtn.className = 'lightbox-close-zoom';
+            closeBtn.addEventListener('click', closeLightbox);
 
-        // Fechar ao clicar
-        lightbox.addEventListener('click', closeLightbox);
+            // Botão Anterior (<)
+            const prevBtn = document.createElement('button');
+            prevBtn.innerHTML = '&#10094;';
+            prevBtn.className = 'lightbox-btn lightbox-prev';
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita que o clique feche o lightbox
+                navigateLightbox(-1);
+            });
+
+            // Botão Próximo (>)
+            const nextBtn = document.createElement('button');
+            nextBtn.innerHTML = '&#10095;';
+            nextBtn.className = 'lightbox-btn lightbox-next';
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Evita que o clique feche o lightbox
+                navigateLightbox(1);
+            });
+
+            // Fecha ao clicar fora da imagem
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+
+            // Junta tudo na tela
+            lightbox.appendChild(imgElement);
+            lightbox.appendChild(closeBtn);
+            lightbox.appendChild(prevBtn);
+            lightbox.appendChild(nextBtn);
+            document.body.appendChild(lightbox);
+
+            // Animação suave de entrada
+            requestAnimationFrame(() => {
+                lightbox.style.opacity = '1';
+                imgElement.style.transform = 'scale(1)';
+            });
+        }
+
+        // Carrega a imagem atual no elemento
+        updateLightboxImage();
     }
 
-    // Função Auxiliar: Fecha Lightbox
+    // Função que troca a URL da imagem de acordo com o índice
+    function updateLightboxImage() {
+        const imgElement = document.querySelector('.lightbox-image');
+        if (imgElement && galleryImages[currentLightboxIndex]) {
+            // Pequeno piscar (fade) para deixar a troca fluida
+            imgElement.style.opacity = '0.5';
+            setTimeout(() => {
+                imgElement.src = galleryImages[currentLightboxIndex].src;
+                imgElement.style.opacity = '1';
+            }, 100);
+        }
+    }
+
+    // Navega para a próxima ou anterior
+    function navigateLightbox(direction) {
+        currentLightboxIndex += direction;
+
+        // Efeito de loop (vai da última para a primeira e vice-versa)
+        if (currentLightboxIndex >= galleryImages.length) {
+            currentLightboxIndex = 0;
+        } else if (currentLightboxIndex < 0) {
+            currentLightboxIndex = galleryImages.length - 1;
+        }
+
+        updateLightboxImage();
+    }
+
+    // Destrói o Lightbox ao fechar
     function closeLightbox() {
         const lightbox = document.querySelector('.lightbox-overlay');
         if (lightbox) {
             lightbox.style.opacity = '0';
-            if(lightbox.firstChild) lightbox.firstChild.style.transform = 'scale(0.9)';
+            const img = lightbox.querySelector('.lightbox-image');
+            if (img) img.style.transform = 'scale(0.9)';
             
             setTimeout(() => {
                 lightbox.remove();
