@@ -681,48 +681,6 @@
       </div>
     </div>
 
-    <script>
-      const webhookAgencia =
-        "https://n8n.carloshenriquedev.com/webhook/formulario-site";
-
-      // 1. Rastreia qual página o cliente abriu (Page View)
-      window.addEventListener("load", () => {
-        fetch(webhookAgencia, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            acao: "page_view",
-            pagina: window.location.pathname || "Home",
-            titulo: document.title,
-          }),
-        });
-      });
-
-      // 2. Rastreia cliques em botões (WhatsApp, Portfólio, etc)
-      document.addEventListener(
-        "click",
-        function (e) {
-          // Verifica se o que foi clicado é um botão ou link de ação
-          const target = e.target.closest("button, a");
-          if (target) {
-            fetch(webhookAgencia, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                acao: "clique_botao",
-                pagina: window.location.pathname || "Home",
-                texto_botao:
-                  target.innerText.trim() ||
-                  target.getAttribute("aria-label") ||
-                  "Botão sem texto",
-                link: target.href || "n/a",
-              }),
-            });
-          }
-        },
-        true,
-      );
-    </script>
     <script src="script.js"></script>
   </body>
 </html>
