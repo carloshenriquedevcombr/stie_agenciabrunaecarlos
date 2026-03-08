@@ -1,5 +1,3 @@
-
-
 git add .
 git commit -m "Configurando deploy automático ??"
 git push origin main

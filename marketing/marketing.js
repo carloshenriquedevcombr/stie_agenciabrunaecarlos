@@ -141,15 +141,30 @@ document.addEventListener('DOMContentLoaded', () => {
         fileInput.value = '';
     }
 
-    // Eventos de arrastar e soltar (Drag and Drop)
-    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
-    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'); });
-    dropZone.addEventListener('drop', (e) => {
-        e.preventDefault(); dropZone.classList.remove('dragover');
-        if (e.dataTransfer.files.length) handleUpload(e.dataTransfer.files[0]);
+    // ---------------------------------------------------------
+    // EVENTOS DE ARRASTAR E SOLTAR (Corrigidos)
+    // ---------------------------------------------------------
+    dropZone.addEventListener('dragover', (e) => { 
+        e.preventDefault(); 
+        dropZone.classList.add('dragover'); 
     });
+    
+    dropZone.addEventListener('dragleave', (e) => { 
+        dropZone.classList.remove('dragover'); 
+    });
+    
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault(); 
+        dropZone.classList.remove('dragover');
+        if (e.dataTransfer.files.length) {
+            handleUpload(e.dataTransfer.files[0]);
+        }
+    });
+    
     fileInput.addEventListener('change', (e) => {
-        if (e.target.files.length) handleUpload(e.target.files[0]);
+        if (e.target.files.length) {
+            handleUpload(e.target.files[0]);
+        }
     });
 
     // ---------------------------------------------------------
