@@ -7,6 +7,8 @@
   --card-bg: #111111;
   --text-primary: #ffffff;
   --text-secondary: #d1d1d1;
+  --accent-color: #4a90e2;
+  --danger-color: #dc3545;
 }
 
 * {
@@ -77,7 +79,7 @@ body {
 }
 .upload-area:hover,
 .upload-area.dragover {
-  border-color: #fff;
+  border-color: var(--text-primary);
   background: #111;
 }
 .upload-area input {
@@ -94,11 +96,12 @@ body {
 .gallery-section {
   margin-bottom: 60px;
 }
-.gallery-section h2 {
+.gallery-section h2,
+.pricing-section h2 {
   color: #fff;
   margin-bottom: 20px;
   font-size: 1.5rem;
-  border-left: 4px solid #fff;
+  border-left: 4px solid var(--text-primary);
   padding-left: 10px;
 }
 .gallery-grid {
@@ -131,7 +134,7 @@ body {
   background: #000;
   border-radius: 8px;
   margin-bottom: 15px;
-  cursor: pointer; /* Indica que é clicável para abrir o modal */
+  cursor: pointer;
   transition: opacity 0.3s;
 }
 .gallery-card img:hover {
@@ -175,8 +178,8 @@ body {
 /* BOTÃO DE EXCLUIR */
 .btn-delete {
   background: rgba(220, 53, 69, 0.1);
-  color: #dc3545;
-  border: 1px solid #dc3545;
+  color: var(--danger-color);
+  border: 1px solid var(--danger-color);
   padding: 8px 15px;
   border-radius: 8px;
   font-weight: bold;
@@ -190,7 +193,7 @@ body {
   gap: 8px;
 }
 .btn-delete:hover {
-  background: #dc3545;
+  background: var(--danger-color);
   color: #fff;
 }
 
@@ -275,15 +278,8 @@ body {
 }
 
 /* ==========================================================================
-   TABELAS DE PREÇOS
+   TABELAS DE PREÇOS (CARDS E LISTAS)
    ========================================================================== */
-.pricing-section h2 {
-  color: #fff;
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  border-left: 4px solid #fff;
-  padding-left: 10px;
-}
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -295,6 +291,10 @@ body {
   border: 1px solid #222;
   border-radius: 12px;
   padding: 30px;
+  transition: transform 0.2s;
+}
+.price-card:hover {
+  transform: translateY(-5px);
 }
 .price-card.highlight {
   border-color: #555;
@@ -311,7 +311,7 @@ body {
   color: #fff;
 }
 .price-val {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   color: #fff;
   font-weight: 800;
   margin: 10px 0;
@@ -323,30 +323,43 @@ body {
 }
 .price-card ul {
   list-style: none;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 .price-card ul li {
   padding: 10px 0;
   border-bottom: 1px solid #222;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  color: #bbb;
+}
+.price-card ul li:last-child {
+  border-bottom: none;
+}
+.price-card ul li strong {
+  color: #fff;
 }
 .price-card ul li::before {
   content: "✓ ";
   color: #666;
+  font-weight: bold;
 }
 
+/* ==========================================================================
+   TABELAS B2B E OUTROS SERVIÇOS
+   ========================================================================== */
 .table-b2b {
   width: 100%;
   border-collapse: collapse;
   background: var(--card-bg);
   border-radius: 12px;
   overflow: hidden;
+  border: 1px solid #222;
 }
 .table-b2b th,
 .table-b2b td {
   padding: 18px 20px;
   text-align: left;
   border-bottom: 1px solid #222;
+  font-size: 0.95rem;
 }
 .table-b2b th {
   background: #1a1a1a;
@@ -358,10 +371,21 @@ body {
 .table-b2b tr:last-child td {
   border-bottom: none;
 }
+.table-b2b tr:hover td {
+  background: #181818;
+}
+.table-b2b td strong {
+  color: #fff;
+}
 
 @media (max-width: 900px) {
   .pricing-grid {
     grid-template-columns: 1fr;
+  }
+  .table-b2b th,
+  .table-b2b td {
+    padding: 12px 10px;
+    font-size: 0.85rem;
   }
   .modal-url-box {
     flex-direction: column;
