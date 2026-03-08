@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel Marketing | Bruna & Carlos</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="marketing.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Painel <span>_MARKETING</span></h1>
+        <p>Acesso restrito da Agência</p>
+      </div>
+
+      <section class="uploader-section">
+        <h2>Hospedar Nova Imagem</h2>
+        <p>
+          Arraste uma imagem para gerar o link da campanha em nossa hospedagem.
+        </p>
+
+        <div
+          class="upload-area"
+          id="drop-zone"
+          onclick="document.getElementById('file-input').click()"
+        >
+          <h3 id="upload-text">Clique ou Arraste uma imagem aqui</h3>
+          <p>JPG, PNG ou WEBP (Máx. 5MB)</p>
+          <input
+            type="file"
+            id="file-input"
+            accept="image/jpeg, image/png, image/gif, image/webp"
+          />
+        </div>
+      </section>
+
+      <section class="gallery-section">
+        <h2>Histórico de Imagens Hospedadas</h2>
+        <div class="gallery-grid" id="gallery-grid"></div>
+      </section>
+
+      <section class="pricing-section">
+        <h2>Consulta Rápida: Projetos (Varejo)</h2>
+        <div class="pricing-grid">
+          <div class="price-card">
+            <div class="tier-name">Start</div>
+            <div class="price-val">R$ 900 <span>/mês</span></div>
+            <ul>
+              <li>8 Posts (Feed)</li>
+              <li>Legendas/Agendamento</li>
+              <li>LP de Entrada: R$ 1.800</li>
+            </ul>
+          </div>
+          <div class="price-card highlight">
+            <div class="tier-name highlight-text">Growth</div>
+            <div class="price-val">R$ 1.500 <span>/mês</span></div>
+            <ul>
+              <li>12 Posts (Com Carrossel)</li>
+              <li>4 Stories semanais</li>
+              <li>LP Completa: R$ 2.500</li>
+            </ul>
+          </div>
+          <div class="price-card">
+            <div class="tier-name">Authority</div>
+            <div class="price-val">R$ 2.800 <span>/mês</span></div>
+            <ul>
+              <li>20 Posts + Edição de Reels</li>
+              <li>Gestão de Comunidade</li>
+              <li>Id. Visual: +R$ 3.500</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Consulta Rápida: Gráficas & Agências (B2B)</h2>
+        <table class="table-b2b">
+          <thead>
+            <tr>
+              <th>Serviço</th>
+              <th>Escopo Básico</th>
+              <th>Valor (Sugerido)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Fechamento de Arquivo</strong></td>
+              <td>Ajuste para CTP (Overprint/Sangria)</td>
+              <td>R$ 50 a R$ 100 /lâmina</td>
+            </tr>
+            <tr>
+              <td><strong>Vetorização</strong></td>
+              <td>Transformar bitmap em vetor limpo</td>
+              <td>R$ 80 a R$ 150+</td>
+            </tr>
+            <tr>
+              <td><strong>Engenharia de Facas</strong></td>
+              <td>Desenho técnico de corte/vinco</td>
+              <td>R$ 150 a R$ 400</td>
+            </tr>
+            <tr>
+              <td><strong>Design de Embalagens</strong></td>
+              <td>Criação Criativa + Normas Técnicas</td>
+              <td>A partir de R$ 1.500</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <div id="image-modal" class="modal-overlay">
+      <div class="modal-content">
+        <button id="close-modal" class="close-btn">&times;</button>
+        <h3
+          id="modal-title"
+          style="color: #fff; margin-bottom: 15px; text-align: center"
+        >
+          Imagem Hospedada
+        </h3>
+        <img id="modal-img" src="" alt="Preview" />
+
+        <div class="modal-url-box">
+          <input type="text" id="modal-url" class="url-input" readonly />
+          <button class="btn" id="btn-copy-modal">Copiar Link</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="marketing.js"></script>
+  </body>
+</html>
